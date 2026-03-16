@@ -13,6 +13,10 @@ export default function Home(){
             <TouchableOpacity style={styles.menu}>
             <Text style={styles.textMenu}>Data Mata Kuliah</Text>
             </TouchableOpacity>
+
+            <TouchableOpacity style={styles.menu} onPress={() => router.push("/profil")}>
+                <Text style={styles.textMenu}>Profil Kampus</Text>
+            </TouchableOpacity>
             
             <TouchableOpacity style={styles.menu}>
             <Text style={styles.textMenu}>Tentang Aplikasi</Text>
