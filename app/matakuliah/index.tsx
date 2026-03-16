@@ -8,26 +8,18 @@ import {
     View
 } from "react-native";
 
-export default function Mahasiswa() {
+export default function MataKuliah() {
 
-const [nim,setNim] = useState("");
+const [kode,setKode] = useState("");
 const [nama,setNama] = useState("");
-const [prodi,setProdi] = useState("");
-const [semester,setSemester] = useState("");
-const [email,setEmail] = useState("");
+const [sks,setSks] = useState("");
 
 const [data,setData] = useState<any[]>([]);
 const [editIndex,setEditIndex] = useState<number | null>(null);
 
 const simpanData = () => {
 
-if(
-nim === "" ||
-nama === "" ||
-prodi === "" ||
-semester === "" ||
-email === ""
-){
+if(kode === "" || nama === "" || sks === ""){
 alert("Data belum lengkap");
 return;
 }
@@ -37,11 +29,9 @@ if(editIndex !== null){
 const update = [...data];
 
 update[editIndex] = {
-nim,
+kode,
 nama,
-prodi,
-semester,
-email
+sks
 };
 
 setData(update);
@@ -52,31 +42,25 @@ setEditIndex(null);
 setData([
 ...data,
 {
-nim,
+kode,
 nama,
-prodi,
-semester,
-email
+sks
 }
 ]);
 
 }
 
-setNim("");
+setKode("");
 setNama("");
-setProdi("");
-setSemester("");
-setEmail("");
+setSks("");
 
 };
 
 const editData = (index:number)=>{
 
-setNim(data[index].nim);
+setKode(data[index].kode);
 setNama(data[index].nama);
-setProdi(data[index].prodi);
-setSemester(data[index].semester);
-setEmail(data[index].email);
+setSks(data[index].sks);
 
 setEditIndex(index);
 
@@ -93,45 +77,31 @@ return(
 
 <View style={styles.container}>
 
-<Text style={styles.title}>Data Mahasiswa</Text>
+<Text style={styles.title}>Data Mata Kuliah</Text>
 
 {/* FORM */}
 
 <View style={styles.formCard}>
 
 <TextInput
-placeholder="NIM"
+placeholder="Kode Mata Kuliah"
 style={styles.input}
-value={nim}
-onChangeText={setNim}
+value={kode}
+onChangeText={setKode}
 />
 
 <TextInput
-placeholder="Nama Mahasiswa"
+placeholder="Nama Mata Kuliah"
 style={styles.input}
 value={nama}
 onChangeText={setNama}
 />
 
 <TextInput
-placeholder="Program Studi"
+placeholder="Jumlah SKS"
 style={styles.input}
-value={prodi}
-onChangeText={setProdi}
-/>
-
-<TextInput
-placeholder="Semester"
-style={styles.input}
-value={semester}
-onChangeText={setSemester}
-/>
-
-<TextInput
-placeholder="Email"
-style={styles.input}
-value={email}
-onChangeText={setEmail}
+value={sks}
+onChangeText={setSks}
 />
 
 <TouchableOpacity
@@ -158,10 +128,8 @@ renderItem={({item,index})=>(
 
 <Text style={styles.nama}>{item.nama}</Text>
 
-<Text style={styles.info}>NIM : {item.nim}</Text>
-<Text style={styles.info}>Prodi : {item.prodi}</Text>
-<Text style={styles.info}>Semester : {item.semester}</Text>
-<Text style={styles.info}>Email : {item.email}</Text>
+<Text style={styles.info}>Kode : {item.kode}</Text>
+<Text style={styles.info}>SKS : {item.sks}</Text>
 
 <View style={styles.actionRow}>
 
@@ -169,18 +137,14 @@ renderItem={({item,index})=>(
 style={styles.editButton}
 onPress={()=>editData(index)}
 >
-
 <Text style={styles.actionText}>Edit</Text>
-
 </TouchableOpacity>
 
 <TouchableOpacity
 style={styles.deleteButton}
 onPress={()=>hapusData(index)}
 >
-
 <Text style={styles.actionText}>Hapus</Text>
-
 </TouchableOpacity>
 
 </View>
@@ -234,8 +198,7 @@ marginBottom:10
 button:{
 backgroundColor:"#2563eb",
 padding:14,
-borderRadius:10,
-marginTop:5
+borderRadius:10
 },
 
 buttonText:{
