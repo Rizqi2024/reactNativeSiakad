@@ -19,17 +19,17 @@ export default function Home() {
           <Text style={styles.label}>Mahasiswa</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.card} onPress={() => router.push("/matakuliah")}>
+        <TouchableOpacity style={styles.card} onPress={() => router.push("/matakuliah/index")}>
           <MaterialIcons name="menu-book" size={36} color="#2563eb" />
           <Text style={styles.label}>Mata Kuliah</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.card} onPress={() => router.push("/profil")}>
+        <TouchableOpacity style={styles.card} onPress={() => router.push("/profil/index")}>
           <MaterialIcons name="school" size={36} color="#2563eb" />
           <Text style={styles.label}>Profil Kampus</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.card} onPress={() => router.push("/tentang")}>
+        <TouchableOpacity style={styles.card} onPress={() => router.push("/tentang/index")}>
           <MaterialIcons name="info" size={36} color="#2563eb" />
           <Text style={styles.label}>Tentang</Text>
         </TouchableOpacity>
